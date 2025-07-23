@@ -1,603 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taboola Ads (BETA) - All Campaigns</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-blue: #0057ff;
-            --primary-green: #00c569;
-            --light-gray: #f8f9fa;
-            --border-gray: #e0e0e0;
-            --text-dark: #333333;
-            --text-medium: #555555;
-            --text-light: #777777;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: var(--text-dark);
-            font-size: 13px;
-        }
-        
-        /* الشريط العلوي */
-        .main-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: white;
-            border-bottom: 1px solid var(--border-gray);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            height: 60px;
-        }
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .logo {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-        
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        
-        .main-nav a {
-            text-decoration: none;
-            color: var(--text-medium);
-            font-size: 13px;
-            font-weight: 500;
-            padding-bottom: 22px;
-            position: relative;
-        }
-        
-        .main-nav .active a {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-        
-        .main-nav .active a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-blue);
-        }
-        
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .user-name {
-            font-weight: 500;
-        }
-        
-        .account-id {
-            color: var(--text-light);
-            font-size: 12px;
-        }
-        
-        .avatar {
-            width: 32px;
-            height: 32px;
-            background-color: var(--primary-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        /* شريط الفلاتر */
-        .filter-section {
-            background-color: white;
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--border-gray);
-        }
-        
-        .filter-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .report-name {
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        
-        .filter-dropdown {
-            padding: 6px 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: white;
-            font-size: 13px;
-            min-width: 120px;
-        }
-        
-        .date-range {
-            color: var(--text-medium);
-            font-size: 13px;
-            white-space: nowrap;
-        }
-        
-        .action-buttons {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .columns-btn, .search-btn, .add-new-btn {
-            padding: 6px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 13px;
-            height: 32px;
-        }
-        
-        .search-btn {
-            width: 32px;
-            justify-content: center;
-            padding: 6px;
-        }
-        
-        .add-new-btn {
-            background-color: var(--primary-green);
-            color: white;
-            border: none !important;
-        }
-        
-        /* جدول الحملات */
-        .campaigns-container {
-            margin: 20px;
-            background-color: white;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-        
-        .campaigns-table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
-        
-        .campaigns-table th {
-            background-color: var(--light-gray);
-            padding: 12px 15px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-medium);
-            border-bottom: 1px solid var(--border-gray);
-            font-size: 13px;
-        }
-        
-        .campaigns-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #f0f0f0;
-            vertical-align: middle;
-            font-size: 13px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .status-badge.running {
-            background-color: #e6f7ee;
-            color: var(--primary-green);
-        }
-        
-        .status-badge.paused {
-            background-color: #feeaea;
-            color: #ff4d4d;
-        }
-        
-        .thumbnail {
-            width: 60px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-        
-        .content-title {
-            font-weight: 500;
-            color: var(--text-dark);
-            white-space: normal;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 5px;
-        }
-        
-        .icon-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: none;
-            background-color: transparent;
-            color: var(--text-medium);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .icon-btn:hover {
-            background-color: #f0f0f0;
-        }
-        
-        .icon-btn.delete:hover {
-            color: #ff4d4d;
-        }
-        
-        .icon-btn.edit:hover {
-            color: var(--primary-blue);
-        }
-        
-        /* تذييل الجدول */
-        .table-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 20px;
-            border-top: 1px solid var(--border-gray);
-        }
-        
-        .records-info {
-            color: var(--text-light);
-            font-size: 13px;
-        }
-        
-        .pagination {
-            display: flex;
-            gap: 5px;
-        }
-        
-        .pagination button {
-            width: 32px;
-            height: 32px;
-            border: 1px solid #ddd;
-            background-color: white;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .pagination button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taboola Ads (BETA)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .account {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .account-icon {
+      background-color: #3498db;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    .filters {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .filters select, .filters input {
+      padding: 5px;
+    }
+    .filters .date {
+      font-weight: bold;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .add-btn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      margin-top: 10px;
+    }
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    table th {
+      background-color: #ecf0f1;
+    }
+    .action-icons {
+      display: flex;
+      gap: 8px;
+    }
+    .pagination {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      font-size: 14px;
+    }
+    .pagination .disabled {
+      color: #aaa;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
-    <header class="main-header">
-        <div class="header-left">
-            <div class="logo">
-                Taboola Ads (BETA)
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li class="active"><a href="#">CAMPAIGNS</a></li>
-                    <li><a href="#">RECOMMENDATIONS</a></li>
-                    <li><a href="#">TRACKING</a></li>
-                    <li><a href="#">AUDIENCES</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="user-profile">
-            <span class="user-name">Dov Rotter</span>
-            <span class="account-id">Account ID: 5689241</span>
-            <div class="avatar">D</div>
-        </div>
-    </header>
+  <header>
+    <div class="logo">Taboola Ads (BETA)</div>
+    <nav class="nav">
+      <a href="#">CAMPAIGNS</a>
+      <a href="#">RECOMMENDATIONS</a>
+      <a href="#">TRACKING</a>
+      <a href="#">AUDIENCES</a>
+    </nav>
+    <div class="account">
+      <div>Dov Rotter<br><small>Account ID: 5689241</small></div>
+      <div class="account-icon">D</div>
+    </div>
+  </header>
 
-    <!-- شريط الفلاتر -->
-    <section class="filter-section">
-        <div class="filter-container">
-            <div class="report-name">
-                Report Name (All Campaigns)
-            </div>
-            <div class="filters">
-                <select class="filter-dropdown">
-                    <option>Day</option>
-                    <option>Campaign</option>
-                    <option>Creative</option>
-                    <option>Site</option>
-                    <option>Platform</option>
-                    <option>Country</option>
-                    <option>Day of Week</option>
-                </select>
-            </div>
-            <div class="date-range">
-                LAST WEEK: 01 JAN 2016 -- 07 JAN 2016
-            </div>
-            <div class="action-buttons">
-                <button class="columns-btn">
-                    <i class="fas fa-table"></i> Columns: Performance
-                </button>
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="add-new-btn">
-                    <i class="fas fa-plus"></i> ADD NEW
-                </button>
-            </div>
-        </div>
-    </section>
+  <section class="toolbar">
+    <div class="filters">
+      <div><strong>Report Name (All Campaigns)</strong></div>
+      <select><option>Day</option></select>
+      <select><option>Campaign</option></select>
+      <select><option>Creative</option></select>
+      <select><option>Site</option></select>
+      <select><option>Platform</option></select>
+      <select><option>Country</option></select>
+      <select><option>Day of Week</option></select>
+      <div class="date">LAST WEEK: 01 JAN 2016 – 07 JAN 2016</div>
+    </div>
+    <div class="actions">
+      <button>Columns: Performance</button>
+      <button>🔍</button>
+      <button class="add-btn">+ ADD NEW</button>
+    </div>
+  </section>
 
-    <!-- جدول الحملات -->
-    <main class="campaigns-container">
-        <table class="campaigns-table">
-            <thead>
-                <tr>
-                    <th width="80">Status</th>
-                    <th width="100">Media</th>
-                    <th width="250">Content</th>
-                    <th width="100">ID</th>
-                    <th width="80">Spent</th>
-                    <th width="100">Impressions</th>
-                    <th width="80">CPM</th>
-                    <th width="80">CTR</th>
-                    <th width="80">Clicks</th>
-                    <th width="90">Actual CPC</th>
-                    <th width="110">Conversion Rate</th>
-                    <th width="90">Conversions</th>
-                    <th width="80">CPA</th>
-                    <th width="100">Creation Date</th>
-                    <th width="90">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- الحملة 1 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة1.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
-                    <td>2888251426</td>
-                    <td>$271.28</td>
-                    <td>342,101</td>
-                    <td>0.79</td>
-                    <td>0.31%</td>
-                    <td>1,072</td>
-                    <td>0.25</td>
-                    <td>0.09%</td>
-                    <td>1</td>
-                    <td>271.28</td>
-                    <td>Mar 15, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 2 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة2.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Digital Marketer? The Secret Tool to Unlocking a Creative Block</td>
-                    <td>2874410668</td>
-                    <td>$89.50</td>
-                    <td>456,740</td>
-                    <td>0.20</td>
-                    <td>0.08%</td>
-                    <td>385</td>
-                    <td>0.23</td>
-                    <td>0.52%</td>
-                    <td>2</td>
-                    <td>44.75</td>
-                    <td>Jan 16, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 3 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة3.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
-                    <td>2888251425</td>
-                    <td>$72.50</td>
-                    <td>112,288</td>
-                    <td>0.65</td>
-                    <td>0.26%</td>
-                    <td>294</td>
-                    <td>0.25</td>
-                    <td>0%</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>Mar 15, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 4 -->
-                <tr>
-                    <td><span class="status-badge paused">Paused</span></td>
-                    <td><img src="صورة4.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
-                    <td>2888251423</td>
-                    <td>$65.74</td>
-                    <td>207,236</td>
-                    <td>0.32</td>
-                    <td>0.13%</td>
-                    <td>270</td>
-                    <td>0.24</td>
-                    <td>0%</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>Mar 15, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 5 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة5.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Digital Marketer? Your Boss will Thank You for This</td>
-                    <td>2874410665</td>
-                    <td>$48.00</td>
-                    <td>72,589</td>
-                    <td>0.66</td>
-                    <td>0.27%</td>
-                    <td>199</td>
-                    <td>0.24</td>
-                    <td>0%</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>Jan 16, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 6 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة6.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
-                    <td>2888252918</td>
-                    <td>$10.57</td>
-                    <td>3,386</td>
-                    <td>3.12</td>
-                    <td>0.77%</td>
-                    <td>26</td>
-                    <td>0.41</td>
-                    <td>30.77%</td>
-                    <td>8</td>
-                    <td>1.32</td>
-                    <td>Mar 15, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 7 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة7.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
-                    <td>2888252922</td>
-                    <td>$6.33</td>
-                    <td>2,184</td>
-                    <td>2.90</td>
-                    <td>0.73%</td>
-                    <td>16</td>
-                    <td>0.40</td>
-                    <td>56.25%</td>
-                    <td>9</td>
-                    <td>0.70</td>
-                    <td>Mar 15, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- الحملة 8 -->
-                <tr>
-                    <td><span class="status-badge running">Running</span></td>
-                    <td><img src="صورة8.png" alt="Campaign Media" class="thumbnail"></td>
-                    <td class="content-title">Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
-                    <td>2888251426</td>
-                    <td>$2.74</td>
-                    <td>693</td>
-                    <td>3.96</td>
-                    <td>0.87%</td>
-                    <td>6</td>
-                    <td>0.46</td>
-                    <td>0%</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>Mar 15, 2020</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
-                            <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
-                            <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <!-- تذييل الجدول -->
-        <div class="table-footer">
-            <div class="records-info">
-                Showing 1-100 of 789
-            </div>
-            <div class="pagination">
-                <button disabled><i class="fas fa-chevron-left"></i></button>
-                <button disabled><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </main>
+  <table>
+    <thead>
+      <tr>
+        <th>Campaign Name</th>
+        <th>Clicks</th>
+        <th>Impressions</th>
+        <th>CTR</th>
+        <th>Spend</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sample Campaign 1</td>
+        <td>1,234</td>
+        <td>56,789</td>
+        <td>2.17%</td>
+        <td>$123.45</td>
+        <td class="action-icons">👁 ✏️ 🗑</td>
+      </tr>
+      <tr>
+        <td>Sample Campaign 2</td>
+        <td>987</td>
+        <td>45,321</td>
+        <td>2.18%</td>
+        <td>$98.76</td>
+        <td class="action-icons">👁 ✏️ 🗑</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <div>Showing 1–100 of 789</div>
+    <div class="disabled">‹ Previous | Next ›</div>
+  </div>
 </body>
-        </html>
+</html>
