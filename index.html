@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Taboola Ads Dashboard Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar {
+      background-color: white;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar div {
+      font-size: 14px;
+    }
+    .table-container {
+      padding: 20px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 1200px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    th {
+      background-color: #f0f2f5;
+    }
+    .media-img {
+      width: 60px;
+      height: auto;
+      border-radius: 4px;
+    }
+    .status-running {
+      color: green;
+      font-weight: bold;
+    }
+    .status-paused {
+      color: orange;
+      font-weight: bold;
+    }
+    .icons {
+      font-size: 16px;
+    }
+    .icons span {
+      margin: 0 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>Taboola Ads (Mock View)</h2>
+  <div>Dov Rotter | ID: 5689241</div>
+</header>
+
+<div class="top-bar">
+  <div><strong>Last Week:</strong> 01 Jan 2016 – 07 Jan 2016</div>
+  <div><button>+ Add New</button></div>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Media</th>
+        <th>Content</th>
+        <th>ID</th>
+        <th>Spent</th>
+        <th>Impressions</th>
+        <th>CPM</th>
+        <th>CTR</th>
+        <th>Clicks</th>
+        <th>Actual CPC</th>
+        <th>Conversion Rate</th>
+        <th>Conversions</th>
+        <th>CPA</th>
+        <th>Creation Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 1.png" class="media-img" alt="Media 1"></td>
+        <td>Can You Guess Which Words People Clicked</td>
+        <td>2888251426</td>
+        <td>$271.28</td>
+        <td>342,101</td>
+        <td>0.79</td>
+        <td>0.31%</td>
+        <td>1,072</td>
+        <td>0.25</td>
+        <td>0.09%</td>
+        <td>1</td>
+        <td>271.28</td>
+        <td>Mar 15, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 2.png" class="media-img" alt="Media 2"></td>
+        <td>Digital Marketer? Unlocking Creative Block</td>
+        <td>2874410668</td>
+        <td>$89.5</td>
+        <td>456,740</td>
+        <td>0.20</td>
+        <td>0.08%</td>
+        <td>385</td>
+        <td>0.23</td>
+        <td>0.52%</td>
+        <td>2</td>
+        <td>44.75</td>
+        <td>Jan 16, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 3.png" class="media-img" alt="Media 3"></td>
+        <td>This Tool Tells You Which Creatives...</td>
+        <td>2888251425</td>
+        <td>$72.5</td>
+        <td>112,288</td>
+        <td>0.65</td>
+        <td>0.26%</td>
+        <td>294</td>
+        <td>0.25</td>
+        <td>0%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Mar 15, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-paused">Paused</td>
+        <td><img src="الصورة 4.png" class="media-img" alt="Media 4"></td>
+        <td>Images Taken Indoors Higher CTR?</td>
+        <td>2888251423</td>
+        <td>$65.74</td>
+        <td>207,236</td>
+        <td>0.32</td>
+        <td>0.13%</td>
+        <td>270</td>
+        <td>0.24</td>
+        <td>0%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Mar 15, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 5.png" class="media-img" alt="Media 5"></td>
+        <td>Your Boss Will Thank You for This</td>
+        <td>2874410665</td>
+        <td>$48</td>
+        <td>72,589</td>
+        <td>0.66</td>
+        <td>0.27%</td>
+        <td>199</td>
+        <td>0.24</td>
+        <td>0%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Jan 16, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 6.png" class="media-img" alt="Media 6"></td>
+        <td>Can You Guess Which Words...</td>
+        <td>2888252918</td>
+        <td>$10.57</td>
+        <td>3,386</td>
+        <td>3.12</td>
+        <td>0.77%</td>
+        <td>26</td>
+        <td>0.41</td>
+        <td>30.77%</td>
+        <td>8</td>
+        <td>1.32</td>
+        <td>Mar 15, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 7.png" class="media-img" alt="Media 7"></td>
+        <td>Indoors Actually Higher CTR?</td>
+        <td>2888252922</td>
+        <td>$6.33</td>
+        <td>2,184</td>
+        <td>2.9</td>
+        <td>0.73%</td>
+        <td>16</td>
+        <td>0.4</td>
+        <td>56.25%</td>
+        <td>9</td>
+        <td>0.7</td>
+        <td>Mar 15, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td class="status-running">Running</td>
+        <td><img src="الصورة 8.png" class="media-img" alt="Media 8"></td>
+        <td>This Tool Tells You Which Creatives...</td>
+        <td>2888251426</td>
+        <td>$2.74</td>
+        <td>693</td>
+        <td>3.96</td>
+        <td>0.87%</td>
+        <td>6</td>
+        <td>0.46</td>
+        <td>0%</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Mar 15, 2020</td>
+        <td class="icons">👁️ ✏️ 🗑️</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
