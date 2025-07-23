@@ -2,129 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Taboola Ads (BETA)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taboola Ads (Beta)</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f6f6f6;
+      background-color: #f5f7fa;
+      color: #333;
     }
+
     header {
-      background-color: #003366;
-      color: white;
-      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 18px;
-      margin: 0;
-    }
-    .account-info {
-      font-size: 14px;
-    }
-    nav {
-      background-color: #005fa3;
-      display: flex;
-      padding: 10px 20px;
-      color: white;
-      font-size: 14px;
-    }
-    nav div {
-      margin-right: 30px;
-      cursor: pointer;
-    }
-    nav div:first-child {
-      background-color: #0071bc;
-      padding: 5px 10px;
-      border-radius: 4px;
-    }
-    .top-bar {
       padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
       align-items: center;
     }
-    .filters {
+
+    header .logo {
+      font-weight: bold;
+      color: #1877f2;
+      font-size: 20px;
+    }
+
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-      padding: 0 20px;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
     }
-    .filters div {
-      background: #eaeaea;
-      padding: 5px 10px;
-      border-radius: 3px;
-      font-size: 13px;
-    }
-    .add-btn {
-      background-color: #1bc47d;
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 4px;
+
+    nav ul li {
       cursor: pointer;
+      color: #333;
+    }
+
+    nav ul li.active {
+      color: #1877f2;
+      font-weight: bold;
+      border-bottom: 2px solid #1877f2;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-info span {
       font-weight: bold;
     }
+
+    .filter-bar {
+      display: flex;
+      justify-content: space-between;
+      background: #e6ecf2;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .sub-filter {
+      display: flex;
+      gap: 15px;
+      margin: 15px 20px;
+      font-size: 14px;
+    }
+
+    .add-new {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
     table {
-      width: 100%;
+      width: 98%;
+      margin: 20px auto;
       border-collapse: collapse;
-      background-color: white;
-      font-size: 12px;
+      background: white;
     }
+
     th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
       text-align: center;
-      vertical-align: middle;
+      font-size: 13px;
     }
+
     th {
-      background-color: #f2f2f2;
+      background-color: #f2f4f8;
+      font-weight: bold;
     }
-    td img {
-      width: 70px;
-      height: auto;
+
+    .campaign-img {
+      width: 60px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 4px;
     }
-    .actions i {
+
+    .action-buttons span {
       margin: 0 5px;
       cursor: pointer;
     }
+
+    .status-toggle {
+      width: 40px;
+      height: 20px;
+      background: #ccc;
+      border-radius: 10px;
+      position: relative;
+      margin: auto;
+    }
+
+    .status-toggle::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: 0.3s;
+    }
+
+    .status-on {
+      background: #28a745;
+    }
+
+    .status-on::before {
+      left: 22px;
+    }
+
     .footer {
       text-align: center;
-      padding: 10px;
+      padding: 15px;
+      font-size: 14px;
       color: #666;
-      font-size: 13px;
     }
-    .status-running { color: green; font-weight: bold; }
-    .status-paused { color: red; font-weight: bold; }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
-    <h1>Taboola Ads (BETA)</h1>
-    <div class="account-info">Dov Rotter | Account ID: 5689241 | <strong>D</strong></div>
+    <div class="logo">Taboola Ads (BETA)</div>
+    <nav>
+      <ul>
+        <li class="active">CAMPAIGNS</li>
+        <li>RECOMMENDATIONS</li>
+        <li>TRACKING</li>
+        <li>AUDIENCES</li>
+      </ul>
+    </nav>
+    <div class="user-info">
+      <span>Dov Rotter</span> | 5689241
+      <div style="background:#1877f2; color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center;">D</div>
+    </div>
   </header>
 
-  <nav>
-    <div>CAMPAIGNS</div>
-    <div>RECOMMENDATIONS</div>
-    <div>TRACKING</div>
-    <div>AUDIENCES</div>
-  </nav>
-
-  <div class="top-bar">
-    <div><strong>All Campaigns</strong></div>
-    <button class="add-btn">+ ADD NEW</button>
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div>Date Range: <strong>01 Jan 2016 - 07 Jan 2016</strong></div>
+    <div>View: <strong>Performance</strong></div>
   </div>
 
-  <div class="filters">
-    <div>Day</div><div>Campaign</div><div>Creative</div><div>Site</div>
-    <div>Platform</div><div>Country</div><div>Day of Week</div>
+  <!-- SUB FILTER -->
+  <div class="sub-filter">
+    <span>Day</span>
+    <span>Campaign</span>
+    <span>Creative</span>
+    <span>Site</span>
+    <span>Platform</span>
+    <span>Country</span>
+    <span>Day of Week</span>
+    <button class="add-new">+ ADD NEW</button>
   </div>
 
+  <!-- TABLE -->
   <table>
     <thead>
       <tr>
@@ -132,7 +199,7 @@
         <th>Media</th>
         <th>Content</th>
         <th>ID</th>
-        <th>Spent</th>
+        <th>Spent ($)</th>
         <th>Impressions</th>
         <th>CPM</th>
         <th>CTR</th>
@@ -146,146 +213,158 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Row template -->
       <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة1.png" alt="creative 1" /></td>
-        <td>Advertisers: Can You Guess Which Words People Clicked on Last Week?</td>
-        <td>2888251426</td>
-        <td>$271.28</td>
-        <td>342,101</td>
-        <td>0.79</td>
-        <td>0.31%</td>
-        <td>1,072</td>
-        <td>0.25</td>
-        <td>0.09%</td>
-        <td>1</td>
-        <td>271.28</td>
-        <td>Mar 15, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
-      </tr>
-      <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة2.png" alt="creative 2" /></td>
-        <td>Digital Marketer? The Secret Tool to Unlocking a Creative Block</td>
-        <td>2874410668</td>
-        <td>$89.5</td>
-        <td>456,740</td>
-        <td>0.2</td>
-        <td>0.08%</td>
-        <td>385</td>
-        <td>0.23</td>
-        <td>0.52%</td>
+        <td><div class="status-toggle status-on"></div></td>
+        <td><img class="campaign-img" src="الصورة1.png" alt="img1"/></td>
+        <td>Big Data Trends 2023</td>
+        <td>1001</td>
+        <td>143.00</td>
+        <td>12345</td>
+        <td>11.57</td>
+        <td>0.35%</td>
+        <td>43</td>
+        <td>3.32</td>
+        <td>2.10%</td>
         <td>2</td>
-        <td>44.75</td>
-        <td>Jan 16, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
+        <td>71.50</td>
+        <td>01/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
       </tr>
+
       <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة3.png" alt="creative 3" /></td>
-        <td>Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
-        <td>2888251425</td>
-        <td>$72.5</td>
-        <td>112,288</td>
-        <td>0.65</td>
-        <td>0.26%</td>
-        <td>294</td>
-        <td>0.25</td>
-        <td>0%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Mar 15, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
+        <td><div class="status-toggle"></div></td>
+        <td><img class="campaign-img" src="الصورة2.png" alt="img2"/></td>
+        <td>Marketing Tools Review</td>
+        <td>1002</td>
+        <td>98.50</td>
+        <td>11200</td>
+        <td>8.79</td>
+        <td>0.28%</td>
+        <td>31</td>
+        <td>3.18</td>
+        <td>1.80%</td>
+        <td>1</td>
+        <td>98.50</td>
+        <td>01/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
       </tr>
+
+      <!-- Repeat similarly -->
       <tr>
-        <td class="status-paused">Paused</td>
-        <td><img src="الصورة4.png" alt="creative 4" /></td>
-        <td>Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
-        <td>2888251423</td>
-        <td>$65.74</td>
-        <td>207,236</td>
-        <td>0.32</td>
-        <td>0.13%</td>
-        <td>270</td>
-        <td>0.24</td>
-        <td>0%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Mar 15, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
+        <td><div class="status-toggle status-on"></div></td>
+        <td><img class="campaign-img" src="الصورة3.png" alt="img3"/></td>
+        <td>AI in Healthcare</td>
+        <td>1003</td>
+        <td>210.75</td>
+        <td>15000</td>
+        <td>14.05</td>
+        <td>0.42%</td>
+        <td>63</td>
+        <td>3.34</td>
+        <td>2.50%</td>
+        <td>4</td>
+        <td>52.69</td>
+        <td>02/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
       </tr>
+
       <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة5.png" alt="creative 5" /></td>
-        <td>Digital Marketer? Your Boss will Thank You for This</td>
-        <td>2874410665</td>
-        <td>$48</td>
-        <td>72,589</td>
-        <td>0.66</td>
+        <td><div class="status-toggle"></div></td>
+        <td><img class="campaign-img" src="الصورة4.png" alt="img4"/></td>
+        <td>Cloud Migration Guide</td>
+        <td>1004</td>
+        <td>56.00</td>
+        <td>8000</td>
+        <td>7.00</td>
+        <td>0.25%</td>
+        <td>20</td>
+        <td>2.80</td>
+        <td>1.50%</td>
+        <td>1</td>
+        <td>56.00</td>
+        <td>02/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td><div class="status-toggle status-on"></div></td>
+        <td><img class="campaign-img" src="الصورة5.png" alt="img5"/></td>
+        <td>Finance 101 for Startups</td>
+        <td>1005</td>
+        <td>89.20</td>
+        <td>9200</td>
+        <td>9.70</td>
+        <td>0.31%</td>
+        <td>28</td>
+        <td>3.18</td>
+        <td>2.00%</td>
+        <td>3</td>
+        <td>29.73</td>
+        <td>03/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td><div class="status-toggle"></div></td>
+        <td><img class="campaign-img" src="الصورة6.png" alt="img6"/></td>
+        <td>Digital Marketing Hacks</td>
+        <td>1006</td>
+        <td>75.00</td>
+        <td>10300</td>
+        <td>7.28</td>
         <td>0.27%</td>
-        <td>199</td>
-        <td>0.24</td>
-        <td>0%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Jan 16, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
-      </tr>
-      <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة6.png" alt="creative 6" /></td>
-        <td>Advertisers: Can You Guess Which Words People Clicked on Last Week?</td>
-        <td>2888252918</td>
-        <td>$10.57</td>
-        <td>3,386</td>
-        <td>3.12</td>
-        <td>0.77%</td>
-        <td>26</td>
-        <td>0.41</td>
-        <td>30.77%</td>
-        <td>8</td>
-        <td>1.32</td>
-        <td>Mar 15, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
-      </tr>
-      <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة7.png" alt="creative 7" /></td>
-        <td>Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
-        <td>2888252922</td>
-        <td>$6.33</td>
-        <td>2,184</td>
-        <td>2.9</td>
-        <td>0.73%</td>
-        <td>16</td>
-        <td>0.4</td>
-        <td>56.25%</td>
+        <td>29</td>
+        <td>2.58</td>
+        <td>3.00%</td>
         <td>9</td>
-        <td>0.7</td>
-        <td>Mar 15, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
+        <td>8.33</td>
+        <td>04/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
       </tr>
+
       <tr>
-        <td class="status-running">Running</td>
-        <td><img src="الصورة8.png" alt="creative 8" /></td>
-        <td>Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
-        <td>2888251426</td>
-        <td>$2.74</td>
-        <td>693</td>
-        <td>3.96</td>
+        <td><div class="status-toggle status-on"></div></td>
+        <td><img class="campaign-img" src="الصورة7.png" alt="img7"/></td>
+        <td>Blockchain Revolution</td>
+        <td>1007</td>
+        <td>120.00</td>
+        <td>11000</td>
+        <td>10.91</td>
         <td>0.87%</td>
-        <td>6</td>
-        <td>0.46</td>
-        <td>0%</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Mar 15, 2020</td>
-        <td class="actions">👁 ✏️ 🗑️</td>
+        <td>96</td>
+        <td>1.25</td>
+        <td>0.90%</td>
+        <td>2</td>
+        <td>60.00</td>
+        <td>05/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
+      </tr>
+
+      <tr>
+        <td><div class="status-toggle"></div></td>
+        <td><img class="campaign-img" src="الصورة8.png" alt="img8"/></td>
+        <td>E-Commerce Analytics</td>
+        <td>1008</td>
+        <td>63.00</td>
+        <td>8300</td>
+        <td>7.59</td>
+        <td>0.23%</td>
+        <td>19</td>
+        <td>3.32</td>
+        <td>1.20%</td>
+        <td>1</td>
+        <td>63.00</td>
+        <td>06/01/2016</td>
+        <td class="action-buttons">👁 ✏️ 🗑️</td>
       </tr>
     </tbody>
   </table>
 
-  <div class="footer">1–100 of 789</div>
+  <!-- FOOTER -->
+  <div class="footer">
+    1–100 of 789
+  </div>
 
 </body>
-                 </html>
+          </html>
