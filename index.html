@@ -1,252 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Taboola Ads (Beta)</title>
+  <meta charset="UTF-8">
+  <title>Taboola Ads (BETA)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f5f6fa;
-      color: #333;
     }
-
-    .header {
+    .top-header {
+      background-color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+    .nav-tabs {
+      background-color: #e7f0fa;
+      display: flex;
+      padding-left: 20px;
+    }
+    .nav-tabs div {
+      padding: 14px 20px;
+      cursor: pointer;
+      color: #0073e6;
+    }
+    .nav-tabs .active {
+      background-color: #fff;
+      border-bottom: 3px solid #0073e6;
+      font-weight: bold;
+    }
+    .filter-bar {
       background-color: #fff;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
+      padding: 10px 20px;
       border-bottom: 1px solid #ccc;
     }
-
-    .logo {
-      font-size: 20px;
-      color: #0b6fff;
-      font-weight: bold;
-    }
-
-    .nav {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .nav a.active {
-      color: #0b6fff;
-      border-bottom: 2px solid #0b6fff;
-      padding-bottom: 4px;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .user-info span {
+    .filter-options span {
+      margin-right: 20px;
       font-size: 14px;
+      color: #333;
     }
-
-    .avatar {
-      background-color: #0b6fff;
-      color: white;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .sub-header {
+    .section-title {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 24px;
+      padding: 20px;
+      font-size: 18px;
     }
-
-    .filters {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .filters span {
-      font-size: 14px;
-      color: #333;
-    }
-
     .add-button {
-      background-color: #28a745;
-      color: white;
-      padding: 8px 16px;
+      background-color: #00c853;
+      color: #fff;
+      padding: 8px 14px;
       border: none;
-      font-weight: bold;
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
+      font-weight: bold;
     }
-
-    .filter-bar {
-      background-color: white;
-      display: flex;
-      gap: 12px;
-      padding: 12px 24px;
-      border-top: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    .table-container {
-      padding: 24px;
-      background-color: white;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14px;
+      background-color: #fff;
+      margin: 0;
     }
-
     th, td {
-      border-bottom: 1px solid #eee;
-      padding: 8px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
       text-align: center;
-    }
-
-    th {
-      background-color: #f0f4f8;
-      font-weight: bold;
-    }
-
-    .status-toggle {
-      width: 40px;
-      height: 20px;
-      background-color: #ccc;
-      border-radius: 10px;
-      position: relative;
-      margin: auto;
-    }
-
-    .status-toggle::after {
-      content: '';
-      width: 16px;
-      height: 16px;
-      background-color: white;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      border-radius: 50%;
-      transition: left 0.3s;
-    }
-
-    .running .status-toggle {
-      background-color: #28a745;
-    }
-
-    .running .status-toggle::after {
-      left: 22px;
-    }
-
-    .campaign-img {
-      width: 40px;
-      height: 40px;
-      object-fit: cover;
-    }
-
-    .actions i {
-      cursor: pointer;
-      margin: 0 5px;
-    }
-
-    .footer {
-      padding: 16px 24px;
-      text-align: right;
       font-size: 14px;
-      color: #555;
+    }
+    th {
+      background-color: #f1f1f1;
+      color: #333;
+    }
+    .footer {
+      padding: 10px 20px;
+      font-size: 14px;
+      color: #777;
       background-color: #fff;
       border-top: 1px solid #ccc;
+    }
+    .status-toggle {
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+    }
+    .running {
+      background-color: #00c853;
+    }
+    .paused {
+      background-color: #f44336;
+    }
+    .icon-buttons {
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="logo">Taboola Ads (BETA)</div>
-    <div class="nav">
-      <a href="#" class="active">CAMPAIGNS</a>
-      <a href="#">RECOMMENDATIONS</a>
-      <a href="#">TRACKING</a>
-      <a href="#">AUDIENCES</a>
-    </div>
-    <div class="user-info">
-      <span>Dov Rotter | 5689241</span>
-      <div class="avatar">D</div>
+  <!-- Header -->
+  <div class="top-header">
+    <div><strong>Taboola Ads (BETA)</strong></div>
+    <div style="display: flex; align-items: center;">
+      <span style="margin-right: 20px;">Dov Rotter | 5689241</span>
+      <span style="background-color: #0073e6; color: white; padding: 6px 10px; border-radius: 50%; margin-right: 10px;">D</span>
+      <span>⚙️ ❓ 🌓</span>
     </div>
   </div>
 
-  <div class="sub-header">
-    <div class="filters">
-      <span>01 Jan 2016 - 07 Jan 2016</span>
-      <span><strong>Performance</strong></span>
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <div class="active">CAMPAIGNS</div>
+    <div>RECOMMENDATIONS</div>
+    <div>TRACKING</div>
+    <div>AUDIENCES</div>
+  </div>
+
+  <!-- Date Filter Section -->
+  <div class="filter-bar">
+    <div class="filter-options">
+      <span>الفترة المختارة: <strong>01 Jan 2016 - 07 Jan 2016</strong></span>
+      <span>نوع البيانات المعروضة: <strong>Performance</strong></span>
     </div>
+  </div>
+
+  <!-- Title and Add Button -->
+  <div class="section-title">
+    <div><strong>All Campaigns</strong></div>
     <button class="add-button">+ ADD NEW</button>
   </div>
 
-  <div class="filter-bar">
-    <div>Day</div>
-    <div>Campaign</div>
-    <div>Creative</div>
-    <div>Site</div>
-    <div>Platform</div>
-    <div>Country</div>
-    <div>Day of Week</div>
-  </div>
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Media</th>
+        <th>Content</th>
+        <th>ID</th>
+        <th>Spent ($)</th>
+        <th>Impressions</th>
+        <th>CPM</th>
+        <th>CTR</th>
+        <th>Clicks</th>
+        <th>Actual CPC</th>
+        <th>Conversion Rate</th>
+        <th>Conversions</th>
+        <th>CPA</th>
+        <th>Creation Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- حملة 1 -->
+      <tr>
+        <td><span class="status-toggle running">Running</span></td>
+        <td><img src="الصورة1.png" width="60" /></td>
+        <td>BIG DATA is changing the world</td>
+        <td>1001</td>
+        <td>123.45</td>
+        <td>45678</td>
+        <td>2.70</td>
+        <td>0.56%</td>
+        <td>250</td>
+        <td>0.49</td>
+        <td>2.5%</td>
+        <td>3</td>
+        <td>1.23</td>
+        <td>01/01/2016</td>
+        <td class="icon-buttons">👁 ✏️ 🗑️</td>
+      </tr>
+      <!-- حملات 2 إلى 8 -->
+      <tr><td><span class="status-toggle paused">Paused</span></td><td><img src="الصورة2.png" width="60" /></td><td>Discover how AI helps you</td><td>1002</td><td>210.00</td><td>38900</td><td>3.20</td><td>0.43%</td><td>167</td><td>0.65</td><td>1.2%</td><td>1</td><td>2.34</td><td>01/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+      <tr><td><span class="status-toggle running">Running</span></td><td><img src="الصورة3.png" width="60" /></td><td>Top 10 Gadgets of 2016</td><td>1003</td><td>89.90</td><td>20200</td><td>1.55</td><td>0.68%</td><td>137</td><td>0.42</td><td>0.9%</td><td>0</td><td>-</td><td>02/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+      <tr><td><span class="status-toggle paused">Paused</span></td><td><img src="الصورة4.png" width="60" /></td><td>Finance Tips You Need</td><td>1004</td><td>310.00</td><td>52000</td><td>4.12</td><td>0.71%</td><td>370</td><td>0.53</td><td>2.0%</td><td>4</td><td>1.50</td><td>03/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+      <tr><td><span class="status-toggle running">Running</span></td><td><img src="الصورة5.png" width="60" /></td><td>Fitness Revolution 2025</td><td>1005</td><td>180.00</td><td>44000</td><td>3.50</td><td>0.62%</td><td>280</td><td>0.64</td><td>1.7%</td><td>2</td><td>2.00</td><td>03/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+      <tr><td><span class="status-toggle running">Running</span></td><td><img src="الصورة6.png" width="60" /></td><td>New Tech You Can’t Miss</td><td>1006</td><td>95.00</td><td>18000</td><td>2.10</td><td>0.75%</td><td>135</td><td>0.51</td><td>3.0%</td><td>9</td><td>0.70</td><td>04/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+      <tr><td><span class="status-toggle paused">Paused</span></td><td><img src="الصورة7.png" width="60" /></td><td>Marketing Hacks for 2016</td><td>1007</td><td>120.00</td><td>19800</td><td>2.45</td><td>0.49%</td><td>97</td><td>0.70</td><td>0.8%</td><td>0</td><td>-</td><td>05/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+      <tr><td><span class="status-toggle running">Running</span></td><td><img src="الصورة8.png" width="60" /></td><td>Learn to Code FAST!</td><td>1008</td><td>67.00</td><td>10200</td><td>1.80</td><td>0.87%</td><td>89</td><td>0.75</td><td>1.5%</td><td>1</td><td>1.00</td><td>07/01/2016</td><td class="icon-buttons">👁 ✏️ 🗑️</td></tr>
+    </tbody>
+  </table>
 
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Media</th>
-          <th>Content</th>
-          <th>ID</th>
-          <th>Spent ($)</th>
-          <th>Impressions</th>
-          <th>CPM</th>
-          <th>CTR</th>
-          <th>Clicks</th>
-          <th>Actual CPC</th>
-          <th>Conversion Rate</th>
-          <th>Conversions</th>
-          <th>CPA</th>
-          <th>Creation Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- صفوف الحملات -->
-        <tr class="running"><td><div class="status-toggle"></div></td><td><img src="الصورة1.png" class="campaign-img" /></td><td>Big Data Campaign</td><td>1001</td><td>150</td><td>10000</td><td>15</td><td>0.45%</td><td>45</td><td>1.25</td><td>2.1%</td><td>5</td><td>30</td><td>01 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr><td><div class="status-toggle"></div></td><td><img src="الصورة2.png" class="campaign-img" /></td><td>Health Tips</td><td>1002</td><td>200</td><td>12000</td><td>16.7</td><td>0.60%</td><td>72</td><td>1.80</td><td>2.5%</td><td>9</td><td>22.2</td><td>02 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr class="running"><td><div class="status-toggle"></div></td><td><img src="الصورة3.png" class="campaign-img" /></td><td>Finance Leads</td><td>1003</td><td>180</td><td>9500</td><td>18.9</td><td>0.52%</td><td>49</td><td>1.40</td><td>2.0%</td><td>6</td><td>30.0</td><td>03 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr><td><div class="status-toggle"></div></td><td><img src="الصورة4.png" class="campaign-img" /></td><td>Gaming Boost</td><td>1004</td><td>300</td><td>15000</td><td>20.0</td><td>0.70%</td><td>105</td><td>2.0</td><td>3.0%</td><td>12</td><td>25.0</td><td>04 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr class="running"><td><div class="status-toggle"></div></td><td><img src="الصورة5.png" class="campaign-img" /></td><td>Travel Deals</td><td>1005</td><td>170</td><td>11000</td><td>15.45</td><td>0.50%</td><td>55</td><td>1.80</td><td>2.3%</td><td>7</td><td>24.3</td><td>05 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr><td><div class="status-toggle"></div></td><td><img src="الصورة6.png" class="campaign-img" /></td><td>Beauty Offers</td><td>1006</td><td>250</td><td>14000</td><td>17.85</td><td>0.65%</td><td>91</td><td>2.1</td><td>2.7%</td><td>10</td><td>25.0</td><td>06 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr class="running"><td><div class="status-toggle"></div></td><td><img src="الصورة7.png" class="campaign-img" /></td><td>Fitness Blog</td><td>1007</td><td>190</td><td>9800</td><td>19.39</td><td>0.55%</td><td>53</td><td>1.7</td><td>2.1%</td><td>6</td><td>31.6</td><td>07 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-        <tr><td><div class="status-toggle"></div></td><td><img src="الصورة8.png" class="campaign-img" /></td><td>Online Courses</td><td>1008</td><td>220</td><td>12500</td><td>17.6</td><td>0.58%</td><td>72</td><td>2.0</td><td>2.9%</td><td>11</td><td>20.0</td><td>07 Jan 2016</td><td class="actions">👁 ✏️ 🗑️</td></tr>
-      </tbody>
-    </table>
-  </div>
-
+  <!-- Footer -->
   <div class="footer">
     1–100 of 789
   </div>
 
 </body>
-                                                                                                                                                                                                                                                                                        </html>
+                                                                                                                                                                                                                                                                                 </html>
