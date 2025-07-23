@@ -1,320 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Taboola Ads - Campaigns</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background-color: #f6f8fb;
-    }
-
-    header {
-      background-color: #0066cc;
-      color: white;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 20px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .nav-links span {
-      background-color: white;
-      color: #0066cc;
-      padding: 5px 10px;
-      border-radius: 50%;
-      font-weight: bold;
-    }
-
-    .topbar {
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .topbar-left {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .topbar select {
-      padding: 5px;
-      border-radius: 4px;
-    }
-
-    .topbar .date-range {
-      font-size: 14px;
-    }
-
-    .topbar .add-btn {
-      background-color: #1eb980;
-      color: white;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .content {
-      padding: 20px;
-    }
-
-    table {
-      width: 100%;
-      background: white;
-      border-collapse: collapse;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-      font-size: 13px;
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    th {
-      background-color: #f4f6f8;
-      color: #333;
-    }
-
-    td img {
-      width: 100px;
-      height: 60px;
-      object-fit: cover;
-      border: 1px solid #ccc;
-    }
-
-    .status-running {
-      color: green;
-      font-weight: bold;
-    }
-
-    .status-paused {
-      color: gray;
-      font-weight: bold;
-    }
-
-    .footer {
-      padding: 10px 20px;
-      font-size: 12px;
-      color: #555;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taboola Ads (BETA) - All Campaigns</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- الشريط العلوي -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <span>Taboola Ads (BETA)</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="#">CAMPAIGNS</a></li>
+                    <li><a href="#">RECOMMENDATIONS</a></li>
+                    <li><a href="#">TRACKING</a></li>
+                    <li><a href="#">AUDIENCES</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="user-profile">
+            <span class="user-name">Dov Rotter</span>
+            <span class="account-id">Account ID: 5689241</span>
+            <div class="avatar">D</div>
+        </div>
+    </header>
 
-  <header>
-    <h1>Taboola Ads (BETA)</h1>
-    <div class="nav-links">
-      <a href="#">CAMPAIGNS</a>
-      <a href="#">RECOMMENDATIONS</a>
-      <a href="#">TRACKING</a>
-      <a href="#">AUDIENCES</a>
-      <span>D</span>
-    </div>
-  </header>
+    <!-- شريط الفلاتر -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="report-name">
+                Report Name (All Campaigns)
+            </div>
+            <div class="filters">
+                <select class="filter-dropdown">
+                    <option>Day</option>
+                    <option>Campaign</option>
+                    <option>Creative</option>
+                    <option>Site</option>
+                    <option>Platform</option>
+                    <option>Country</option>
+                    <option>Day of Week</option>
+                </select>
+            </div>
+            <div class="date-range">
+                LAST WEEK: 01 JAN 2016 -- 07 JAN 2016
+            </div>
+            <div class="action-buttons">
+                <button class="columns-btn">
+                    <i class="fas fa-table"></i> Columns: Performance
+                </button>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="add-new-btn">
+                    <i class="fas fa-plus"></i> ADD NEW
+                </button>
+            </div>
+        </div>
+    </section>
 
-  <div class="topbar">
-    <div class="topbar-left">
-      <strong>All Campaigns</strong>
-      <select><option>Creative</option></select>
-      <select><option>Site</option></select>
-      <select><option>Platform</option></select>
-      <select><option>Country</option></select>
-      <select><option>Day of Week</option></select>
-    </div>
-    <div>
-      <span class="date-range">01 JAN 2016 - 07 JAN 2016</span>
-      <button class="add-btn">+ ADD NEW</button>
-    </div>
-  </div>
-
-  <div class="content">
-    <table>
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Media</th>
-          <th>Content</th>
-          <th>ID</th>
-          <th>Spent</th>
-          <th>Impressions</th>
-          <th>CPM</th>
-          <th>CTR</th>
-          <th>Clicks</th>
-          <th>Actual CPC</th>
-          <th>Conversion Rate</th>
-          <th>Conversions</th>
-          <th>CPA</th>
-          <th>Creation Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 1.png" alt="الصورة 1"></td>
-          <td>Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
-          <td>2888251426</td>
-          <td>$271.28</td>
-          <td>342,101</td>
-          <td>0.79</td>
-          <td>0.31%</td>
-          <td>1,072</td>
-          <td>0.25</td>
-          <td>0.09%</td>
-          <td>1</td>
-          <td>271.28</td>
-          <td>Mar 15, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 2.png" alt="الصورة 2"></td>
-          <td>Digital Marketer? The Secret Tool to Unlocking a Creative Block</td>
-          <td>2874410668</td>
-          <td>$89.5</td>
-          <td>456,740</td>
-          <td>0.2</td>
-          <td>0.08%</td>
-          <td>385</td>
-          <td>0.23</td>
-          <td>0.52%</td>
-          <td>2</td>
-          <td>44.75</td>
-          <td>Jan 16, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 3.png" alt="الصورة 3"></td>
-          <td>Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
-          <td>2888251425</td>
-          <td>$72.5</td>
-          <td>112,288</td>
-          <td>0.65</td>
-          <td>0.26%</td>
-          <td>294</td>
-          <td>0.25</td>
-          <td>0%</td>
-          <td>0</td>
-          <td>0</td>
-          <td>Mar 15, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-paused">Paused</td>
-          <td><img src="الصورة 4.png" alt="الصورة 4"></td>
-          <td>Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
-          <td>2888251423</td>
-          <td>$65.74</td>
-          <td>207,236</td>
-          <td>0.32</td>
-          <td>0.13%</td>
-          <td>270</td>
-          <td>0.24</td>
-          <td>0%</td>
-          <td>0</td>
-          <td>0</td>
-          <td>Mar 15, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 5.png" alt="الصورة 5"></td>
-          <td>Digital Marketer? Your Boss will Thank You for This</td>
-          <td>2874410665</td>
-          <td>$48</td>
-          <td>72,589</td>
-          <td>0.66</td>
-          <td>0.27%</td>
-          <td>199</td>
-          <td>0.24</td>
-          <td>0%</td>
-          <td>0</td>
-          <td>0</td>
-          <td>Jan 16, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 6.png" alt="الصورة 6"></td>
-          <td>Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
-          <td>2888252918</td>
-          <td>$10.57</td>
-          <td>3,386</td>
-          <td>3.12</td>
-          <td>0.77%</td>
-          <td>26</td>
-          <td>0.41</td>
-          <td>30.77%</td>
-          <td>8</td>
-          <td>1.32</td>
-          <td>Mar 15, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 7.png" alt="الصورة 7"></td>
-          <td>Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
-          <td>2888252922</td>
-          <td>$6.33</td>
-          <td>2,184</td>
-          <td>2.9</td>
-          <td>0.73%</td>
-          <td>16</td>
-          <td>0.4</td>
-          <td>56.25%</td>
-          <td>9</td>
-          <td>0.7</td>
-          <td>Mar 15, 2020</td>
-        </tr>
-        <tr>
-          <td class="status-running">Running</td>
-          <td><img src="الصورة 8.png" alt="الصورة 8"></td>
-          <td>Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
-          <td>2888251426</td>
-          <td>$2.74</td>
-          <td>693</td>
-          <td>3.96</td>
-          <td>0.87%</td>
-          <td>6</td>
-          <td>0.46</td>
-          <td>0%</td>
-          <td>0</td>
-          <td>0</td>
-          <td>Mar 15, 2020</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="footer">
-    Showing 1–100 of 789
-  </div>
-
+    <!-- جدول الحملات -->
+    <main class="campaigns-container">
+        <table class="campaigns-table">
+            <thead>
+                <tr>
+                    <th width="80px">Status</th>
+                    <th width="100px">Media</th>
+                    <th width="250px">Content</th>
+                    <th width="120px">ID</th>
+                    <th width="90px">Spent</th>
+                    <th width="110px">Impressions</th>
+                    <th width="80px">CPM</th>
+                    <th width="80px">CTR</th>
+                    <th width="80px">Clicks</th>
+                    <th width="100px">Actual CPC</th>
+                    <th width="120px">Conversion Rate</th>
+                    <th width="100px">Conversions</th>
+                    <th width="90px">CPA</th>
+                    <th width="120px">Creation Date</th>
+                    <th width="120px">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- الحملة 1 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src="الصورة 1.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
+                    <td>2888251426</td>
+                    <td>$271.28</td>
+                    <td>342,101</td>
+                    <td>0.79</td>
+                    <td>0.31%</td>
+                    <td>1,072</td>
+                    <td>0.25</td>
+                    <td>0.09%</td>
+                    <td>1</td>
+                    <td>271.28</td>
+                    <td>Mar 15, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 2 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src="الصورة 2.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Digital Marketer? The Secret Tool to Unlocking a Creative Block</td>
+                    <td>2874410668</td>
+                    <td>$89.50</td>
+                    <td>456,740</td>
+                    <td>0.20</td>
+                    <td>0.08%</td>
+                    <td>385</td>
+                    <td>0.23</td>
+                    <td>0.52%</td>
+                    <td>2</td>
+                    <td>44.75</td>
+                    <td>Jan 16, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 3 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src="الصورة 3.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
+                    <td>2888251425</td>
+                    <td>$72.50</td>
+                    <td>112,288</td>
+                    <td>0.65</td>
+                    <td>0.26%</td>
+                    <td>294</td>
+                    <td>0.25</td>
+                    <td>0%</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Mar 15, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 4 -->
+                <tr>
+                    <td><span class="status-badge paused">Paused</span></td>
+                    <td><img src="الصورة 4.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
+                    <td>2888251423</td>
+                    <td>$65.74</td>
+                    <td>207,236</td>
+                    <td>0.32</td>
+                    <td>0.13%</td>
+                    <td>270</td>
+                    <td>0.24</td>
+                    <td>0%</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Mar 15, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 5 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src="الصورة 5.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Digital Marketer? Your Boss will Thank You for This</td>
+                    <td>2874410665</td>
+                    <td>$48.00</td>
+                    <td>72,589</td>
+                    <td>0.66</td>
+                    <td>0.27%</td>
+                    <td>199</td>
+                    <td>0.24</td>
+                    <td>0%</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Jan 16, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 6 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src=" الصورة6.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
+                    <td>2888252918</td>
+                    <td>$10.57</td>
+                    <td>3,386</td>
+                    <td>3.12</td>
+                    <td>0.77%</td>
+                    <td>26</td>
+                    <td>0.41</td>
+                    <td>30.77%</td>
+                    <td>8</td>
+                    <td>1.32</td>
+                    <td>Mar 15, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 7 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src="الصورة 7.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Advertisers: Are Images Taken Indoors Actually Getting a Higher CTR Right Now?</td>
+                    <td>2888252922</td>
+                    <td>$6.33</td>
+                    <td>2,184</td>
+                    <td>2.90</td>
+                    <td>0.73%</td>
+                    <td>16</td>
+                    <td>0.40</td>
+                    <td>56.25%</td>
+                    <td>9</td>
+                    <td>0.70</td>
+                    <td>Mar 15, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                
+                <!-- الحملة 8 -->
+                <tr>
+                    <td><span class="status-badge running">Running</span></td>
+                    <td><img src="الصورة 8.png" alt="Campaign Media" class="thumbnail"></td>
+                    <td class="content-title">Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
+                    <td>2888251426</td>
+                    <td>$2.74</td>
+                    <td>693</td>
+                    <td>3.96</td>
+                    <td>0.87%</td>
+                    <td>6</td>
+                    <td>0.46</td>
+                    <td>0%</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Mar 15, 2020</td>
+                    <td class="action-buttons">
+                        <button class="icon-btn preview"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn edit"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- تذييل الجدول -->
+        <div class="table-footer">
+            <div class="records-info">
+                Showing 1-100 of 789
+            </div>
+            <div class="pagination">
+                <button disabled><i class="fas fa-chevron-left"></i></button>
+                <button disabled><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </main>
 </body>
-            </html>
+                          </html>
