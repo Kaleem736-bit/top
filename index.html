@@ -159,7 +159,7 @@
     </div>
   </div>
 
-  <!-- ✅ شريط الفلاتر والتحكم -->
+  <!-- ✅ شريط الفلاتر -->
   <div class="header-controls">
     <div class="tabs">
       <button>Day</button>
@@ -184,7 +184,7 @@
     </div>
   </div>
 
-  <!-- ✅ جدول البيانات مع صور PNG -->
+  <!-- ✅ جدول الحملات الكامل -->
   <div class="table-container">
     <table class="table table-bordered table-sm">
       <thead>
@@ -207,27 +207,142 @@
         </tr>
       </thead>
       <tbody>
-        <!-- 8 صفوف باستخدام الصور من الصورة 1.png حتى الصورة 8.png -->
-        <!-- عدّل النصوص حسب الحاجة -->
-        <!-- تأكد أن الصور محفوظة في نفس مجلد الملف -->
-        ${[...Array(8)].map((_, i) => `
         <tr>
           <td><span class="status-indicator"></span> Running</td>
-          <td><img src="الصورة ${i + 1}.png" width="60" alt="Media ${i + 1}"></td>
-          <td>عنوان الإعلان ${i + 1}</td>
-          <td>28882514${20 + i}</td>
-          <td>$${(Math.random() * 200 + 10).toFixed(2)}</td>
-          <td>${Math.floor(Math.random() * 500000)}</td>
-          <td>${(Math.random() * 3).toFixed(2)}</td>
-          <td>${(Math.random() * 1).toFixed(2)}%</td>
-          <td>${Math.floor(Math.random() * 1000)}</td>
-          <td>${(Math.random() * 1).toFixed(2)}</td>
-          <td>${(Math.random() * 100).toFixed(2)}%</td>
-          <td>${Math.floor(Math.random() * 10)}</td>
-          <td>$${(Math.random() * 100).toFixed(2)}</td>
+          <td><img src="الصورة 1.png" width="60" alt="Media 1"></td>
+          <td>Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
+          <td>2888251426</td>
+          <td>$271.26</td>
+          <td>342,101</td>
+          <td>0.79</td>
+          <td>0.31%</td>
+          <td>1,072</td>
+          <td>0.25</td>
+          <td>0.09%</td>
+          <td>1</td>
+          <td>271.26</td>
           <td>Mar 15, 2020</td>
           <td>👁️ ✏️ 🗑️</td>
-        </tr>`).join('')}
+        </tr>
+        <tr>
+          <td><span class="status-indicator"></span> Running</td>
+          <td><img src="الصورة 2.png" width="60" alt="Media 2"></td>
+          <td>Digital Marketer? The Secret Tool to Unlocking a Creative Block</td>
+          <td>2874410668</td>
+          <td>$89.5</td>
+          <td>456,740</td>
+          <td>0.2</td>
+          <td>0.08%</td>
+          <td>385</td>
+          <td>0.23</td>
+          <td>0.52%</td>
+          <td>2</td>
+          <td>44.75</td>
+          <td>Jan 16, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
+        <tr>
+          <td><span class="status-indicator"></span> Running</td>
+          <td><img src="الصورة 3.png" width="60" alt="Media 3"></td>
+          <td>Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
+          <td>2888251425</td>
+          <td>$72.5</td>
+          <td>112,288</td>
+          <td>0.65</td>
+          <td>0.26%</td>
+          <td>294</td>
+          <td>0.25</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Mar 15, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
+        <tr>
+          <td><span style="background-color: #ccc;" class="status-indicator"></span> Paused</td>
+          <td><img src="الصورة 4.png" width="60" alt="Media 4"></td>
+          <td>Advertisers: Are Image Taken Indoors Actually Getting a Higher CTR Right Now?</td>
+          <td>2888251423</td>
+          <td>$65.74</td>
+          <td>207,236</td>
+          <td>0.32</td>
+          <td>0.13%</td>
+          <td>270</td>
+          <td>0.24</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Mar 15, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
+        <tr>
+          <td><span class="status-indicator"></span> Running</td>
+          <td><img src="الصورة 5.png" width="60" alt="Media 5"></td>
+          <td>Digital Marketer? Your Boss will Thank You for This</td>
+          <td>2874410665</td>
+          <td>$48</td>
+          <td>72,589</td>
+          <td>0.66</td>
+          <td>0.27%</td>
+          <td>199</td>
+          <td>0.24</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Jan 16, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
+        <tr>
+          <td><span class="status-indicator"></span> Running</td>
+          <td><img src="الصورة 6.png" width="60" alt="Media 6"></td>
+          <td>Advertisers: Can You Guess Which Words People Clicked on Most Last Week?</td>
+          <td>2888257918</td>
+          <td>$10.57</td>
+          <td>3,386</td>
+          <td>3.12</td>
+          <td>0.77%</td>
+          <td>26</td>
+          <td>0.41</td>
+          <td>30.77%</td>
+          <td>8</td>
+          <td>1.32</td>
+          <td>Mar 15, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
+        <tr>
+          <td><span class="status-indicator"></span> Running</td>
+          <td><img src="الصورة 7.png" width="60" alt="Media 7"></td>
+          <td>Advertisers: Are Image Taken Indoors Actually Getting a Higher CTR Right Now?</td>
+          <td>2888252922</td>
+          <td>$6.33</td>
+          <td>2,184</td>
+          <td>2.9</td>
+          <td>0.73%</td>
+          <td>16</td>
+          <td>0.4</td>
+          <td>56.25%</td>
+          <td>9</td>
+          <td>0.7</td>
+          <td>Mar 15, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
+        <tr>
+          <td><span class="status-indicator"></span> Running</td>
+          <td><img src="الصورة 8.png" width="60" alt="Media 8"></td>
+          <td>Advertisers: This Tool Tells You Which Creatives to Use in Light of Recent Events</td>
+          <td>2888251426</td>
+          <td>$2.74</td>
+          <td>693</td>
+          <td>3.96</td>
+          <td>0.87%</td>
+          <td>6</td>
+          <td>0.46</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Mar 15, 2020</td>
+          <td>👁️ ✏️ 🗑️</td>
+        </tr>
       </tbody>
     </table>
     <p>1–100 of 789</p>
@@ -235,3 +350,4 @@
 
 </body>
 </html>
+
